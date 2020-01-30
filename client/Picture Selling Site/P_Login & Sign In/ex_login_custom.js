@@ -20,15 +20,10 @@ Template.ex_login_custom.helpers({
   },
   isSignUpMode: function() {
     return Session.get('isSignUpMode'); //화면을 회원가입 모드로 변경/복구
-  },
-  userInfo: function() {
-    return Meteor.user();
   }
 });
 
 Template.ex_login_custom.events({
-
-  // 로그인하기 버튼
   'click #btn-signIn': function() {
     var email = $('#inp-email').val();
     var password = $('#inp-password').val();
@@ -41,22 +36,16 @@ Template.ex_login_custom.events({
       }
     });
   },
-
   'click #btn-logout': function() {
-    Meteor.logout(); // 이게 로그아웃이다~~~~~~~
+    // Meteor.logout();
     alert("로그아웃 되었습니다.");
   },
-
-  // 회원가입하기 버튼 누르면 isSingUPMode가 true가 되서 get isSignUpMode를 html에 넘겨주나봄
   'click #btn-signUpMode': function() {
     Session.set('isSignUpMode', true);  //회원 가입 모드 On
   },
-  // 뒤로가기 버튼 : 회원가입 탈출
   'click #btn-back': function() {
     Session.set('isSignUpMode', false); //회원 가입 모드 Off
   },
-
-  // 회원가입하기 버튼 : DB로 넘어갈 듯
   'click #btn-signUp': function() {
     //사용자 입력 정보 저장
     var email = $('#inp-email').val();
@@ -66,7 +55,8 @@ Template.ex_login_custom.events({
     if(password == passwordConfirm) { // 비밀번호와 확인이 동일하게 입력 되었는지 확인
       Accounts.createUser({ //사용자 생성 함수
         email: email,
-        password: password // 여기에 다른 정보도 추가할 수 있다는 거임!!~~~~~~~~~~~~
+        password: password,
+        
       }, function(err) { //사용자 생성 오류 시 처리 콜백 함수
         if (err) {
           alert(err);
@@ -77,8 +67,6 @@ Template.ex_login_custom.events({
       alert('비밀번호가 일치하지 않습니다. 다시 확인 해 주세요.');
     }
   },
-  
-  // 정보수정하는 버튼
   'click #btn-update-profile': function() {
     var userInfo = Meteor.user();
     var name = $('#inp-name').val();

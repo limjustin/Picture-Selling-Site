@@ -1,3 +1,4 @@
+
 Meteor.startup(function() {
   // code to run on server at startup
   if (!Meteor.users.findOne({username: 'admin'})) {
@@ -14,4 +15,8 @@ Meteor.startup(function() {
     });
   }
 });
+
+//비어있는 오브젝트를 넣으면 전체를 지움
+//DB_USER.remove({})
+
 

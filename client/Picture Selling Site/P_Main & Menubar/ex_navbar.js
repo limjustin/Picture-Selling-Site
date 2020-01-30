@@ -1,6 +1,6 @@
 FlowRouter.template('/ex_navbar', 'ex_navbar');
 
-Template.ex_mypagepost.onCreated(function() {
+Template.ex_navbar.onCreated(function() {
     var _id = FlowRouter.getParam('_id')
 });
 
@@ -10,6 +10,15 @@ Template.ex_navbar.helpers({
         return DB_FILES.findOne({_id: this.file_id}).link();
     }
 });
+Template.ex_navbar.events({
+    'click #btn-logout': function() {
+        Meteor.logout();
+        alert("로그아웃 되었습니다.");
+    }
+    
+});
 
 // 만약에 있으면 링크 첫번째 꺼를 불러오고
 // 만약에 없으면 그냥 mypage창
+
+
