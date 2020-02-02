@@ -8,36 +8,15 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
-          <!-- <li class="nav-item active">
-            {{#if currentUser}}
-            <a class="btn btn-outline-primary" href="/ex_uploadpicture">사진 등록하기 <span class="sr-only">(current)</span></a>
-            {{else}}
-              {{alert}}
-              <a class="btn btn-outline-primary" href="/ex_login_custom">사진 등록하기 <span class="sr-only">(current)</span></a> 
-              // 로그인 창으로 가게
-            {{/if}}
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/ex_mypage/{{link}}">마이페이지</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">캐시 충전</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">장바구니</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">채팅</a>
-          </li> -->
           {{#if currentUser}}
             <li class="nav-item active">
               <a class="btn btn-outline-primary" href="/ex_uploadpicture">사진 등록하기 <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/ex_mypage/{{link}}">마이페이지</a>
+              <a class="btn btn-outline-primary" href="/ex_mypage/{{link}}">마이페이지 <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/ex_cashcharge">캐시 충전</a>
+              <a class="btn btn-outline-primary" href="/ex_cashcharge/{{link}}">캐시 충전 <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/ex_cart">장바구니</a>
@@ -55,13 +34,13 @@
               <a class = "btn btn-outline-primary" href="/ex_login_custom" onclick="alert('로그인해라')">마이페이지 <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/ex_login_custom">캐시 충전</a>
+              <a class = "btn btn-outline-primary" href="/ex_login_custom" onclick="alert('로그인해라')">캐시 충전 <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/ex_login_custom">장바구니</a>
+              <a class = "btn btn-outline-primary" href="/ex_login_custom" onclick="alert('로그인해라')">장바구니 <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/ex_login_custom">채팅</a>
+              <a class = "btn btn-outline-primary" href="/ex_login_custom" onclick="alert('로그인해라')">채팅 <span class="sr-only">(current)</span></a>
             </li>
           
           {{/if}}
@@ -70,10 +49,11 @@
         <ul class="navbar-nav ml-auto">
           {{#if currentUser}}
           <li class="nav-item">
-            <small><h1 class="h3 mb-3 font-weight-normal" style="color:aliceblue">{{currentUser.emails.[0].address}}님 &nbsp; </h1></small>>
+            <small><h1 class="h6 mb-3" style="color:aliceblue; margin-top: 1rem;">{{currentUser.emails.[0].address}}님 &nbsp; </h1></small>>
           </li>
           <li class="nav-item">
-            <button id="btn-logout" class="btn btn-lg btn-primary btn-block">Sign out</button>
+            <!-- <button id="btn-logout" class="btn btn-lg btn-primary btn-block">Sign out</button> -->
+            <button id="btn-ex_carousel" onclick="location.href='/ex_carousel'" class="btn btn-lg btn-outline-primary btn-block">sign out</button>
           </li>
           {{else}}
           <li class="nav-item">

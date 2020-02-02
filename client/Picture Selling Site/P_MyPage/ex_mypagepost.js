@@ -10,13 +10,15 @@ Template.ex_mypagepost.onCreated(function() {
 Template.ex_mypagepost.helpers({
   board: function() {
     var _id = FlowRouter.getParam('_id')
-    return DB_POSTS.findOne({_id: _id});
+    return Meteor.users.findOne({_id: _id});
   },
-  createdAt: function() {
-    return this.createdAt.toStringYMDHMS();
+  link: function() {
+    return Meteor.user().profile.profile_picture;
   },
-  link: function() { // 얘가 여기 있어야해?
-    // 저장 된 이미지 링크를 반환
-    return DB_FILES.findOne({_id: this.file_id}).link();
-  }
+    name: function() {
+      return Meteor.user().profile.name;
+    },
+    title: function() {
+      return Meteor.user().profile.introduce;
+    }
 });

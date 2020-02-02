@@ -1,7 +1,8 @@
 <template name="ex_login_custom">
   <div id="ex_login_custom" class="text-center">
     <div class="form">
-      <a href="/ex_carousel"><img class="mb-4" src="/examples/photo-camera.png" alt="" width="80" height="80" id="inp-file"></a>
+      <!-- <a href="/ex_carousel"><img class="mb-4" src="/examples/photo-camera.png" alt="" width="80" height="80" id="inp-file"></a> -->
+      <button id="btn-back" style="border-color: transparent; background-color: transparent;" onclick="location.href='/ex_carousel'" class="mb-4"><img src="/examples/photo-camera.png" alt="" width="80" height="80" id="inp-file"></button>
       {{#if currentUser}} <!-- 로그인 후 경우 // if 로그인했냐 else 안했냐-->
         <h1 style="color: blanchedalmond;">Welcome <br>{{currentUser.emails.[0].address}}</h1>
         <!-- <button id="btn-update-profile" class="btn btn-outline-primary btn-lg btn-block mb-1">Update Profile</button> -->

@@ -53,10 +53,21 @@ Template.ex_login_custom.events({
     var passwordConfirm = $('#inp-passwordConfirm').val();
 
     if(password == passwordConfirm) { // 비밀번호와 확인이 동일하게 입력 되었는지 확인
+      // 연습 예제
+      DB_POSTS.insert({
+        name: 'new user',
+        title: 'hello world',
+        file_id: 'default'  
+      }) 
       Accounts.createUser({ //사용자 생성 함수
         email: email,
         password: password,
-        
+        profile: {
+          profile_picture: 'default',
+          name: 'user',
+          introduce: 'Hello World!',
+          cash: '0'
+        }
       }, function(err) { //사용자 생성 오류 시 처리 콜백 함수
         if (err) {
           alert(err);

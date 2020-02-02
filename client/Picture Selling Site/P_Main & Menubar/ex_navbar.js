@@ -7,11 +7,11 @@ Template.ex_navbar.onCreated(function() {
 Template.ex_navbar.helpers({
     link: function() { // 얘가 여기 있어야해?
         // 저장 된 이미지 링크를 반환
-        return DB_FILES.findOne({_id: this.file_id}).link();
+        return Meteor.userId();
     }
 });
 Template.ex_navbar.events({
-    'click #btn-logout': function() {
+    'click #btn-ex_carousel': function() {
         Meteor.logout();
         alert("로그아웃 되었습니다.");
     }

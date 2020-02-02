@@ -20,50 +20,47 @@ Template.ex_mypageposting.helpers({
       $('#editor').summernote('reset')
     });
 
-    return DB_POSTS.findOne({_id: _id});
+    return Meteor.users.findOne({_id: _id});
   },
-  link: function() {
-    // 저장 된 이미지 링크를 반환
-    return DB_FILES.findOne({_id: this.file_id}).link();
+  link: function() { // 저장된 이미지 링크 반환
+    return Meteor.user().profile.profile_picture.link();
   }
 });
 
 Template.ex_mypageposting.events({
   'click #btn-save': function() {
-    // 사진 저장하는 기능
-    // 파일 먼저 저장
-    var file = $('#inp-file').prop('files')[0];   // 화면에서 선택 된 파일 가져오기 // 이게 사진인듯
+    var file = $('#inp-file').prop('files')[0];
     var file_id = DB_FILES.insertFile(file);
-    // DB 저장 시 파일의 _id와 name을 함께 저장
-    //// 존나 중요한 사실 : insert 두 번 들어가면 글도 두번 나온다!!!!!!!!!!
-    // DB_POSTS.insert({    // 컨텐츠 DB에 저장
-    //   file_id: file_id                // 저장 된 파일의 _id
-    // });
-
     var name = $('#inp-name').val();
     var title = $('#inp-title').val();
-    var html = $('#editor').summernote('code');
 
     if(!title) {
       return alert('제목은 반드시 입력 해 주세요.');
     }
     var _id = FlowRouter.getParam('_id');
     if( _id === 'newPosting') {
-      DB_POSTS.insert({
-        createdAt: new Date(),
-        name: name,
-        title: title,
-        content: html,
-        readCount: 0,
-        file_id: file_id  
-      })
-    } else {
-      var post = DB_POSTS.findOne({_id: _id});
-      post.name = name;
-      post.title = title;
-      post.content = html;
-      post.file_id = file_id; // 이게 핵심이야 안 그러면 그림 수정 안됨~~
-      DB_POSTS.update({_id: _id}, post);
+
+    } else { // newPosting 아니니까 여기로 항상 실행되네 이거는 확인
+      // var post = Meteor.users.findOne({_id: _id});
+      // post.profile.profile_picture = file_id;
+      // post.profile.name = name;
+      // post.profile.introduce = title;
+
+      // // Meteor.user().profile.update(this_id, {$set : {profile_picture: file_id, name: name, introduce: title}}); // Meteor.users.profile을 66번째줄이랑 맞춰줘야할지 고민
+      // // DB_POSTS.update({_id: _id}, post);
+      // Meteor.user().profile.update({_id: Meteor.userId()},{$set : {profile_picture: file_id, name: name, introduce: title}});
+
+      ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+      var userInfo = Meteor.user();
+      Meteor.users.update({_id: userInfo._id}, {
+        $set: {
+          'profile.profile_picture': file_id,
+          'profile.name': name,
+          'profile.introduce': title
+        }
+      });
+
     }
 
     alert('저장하였습니다.');
