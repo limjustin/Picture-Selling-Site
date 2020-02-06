@@ -22,3 +22,4 @@ Template.ex_mypage.helpers({
       return Meteor.user().profile.introduce;
     }
 });
+

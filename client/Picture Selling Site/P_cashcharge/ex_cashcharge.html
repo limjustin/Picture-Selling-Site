@@ -1,13 +1,21 @@
 <template name="ex_cashcharge">
-    {{> ex_navbar}}
-    {{#with board}}
-      <div id="ex_cashcharge" style="text-align: center; margin-top: 5rem;">
-        
-        <img class="profiles" src="http://localhost:3000/cdn/storage/db_files/{{link}}/original/{{link}}.png" style="border-radius: 100%; width: 150px; height: 150px;margin-bottom: 1rem;">
-        <h3>{{name}}</h3>
-        <div class="cashcharging">
-        </div>>    
-  
+  {{> ex_navbar}}
+
+    <div id="ex_cashcharge">
+      <div id="ex_post" style="text-align: center; margin-top: 5rem;">
+          <img class="profiles" src="http://localhost:3000/cdn/storage/db_files/{{link}}/original/{{link}}.png" style="border-radius: 100%; width: 150px; height: 150px;margin-bottom: 1rem;">
+          <h3>{{name}}</h3>
       </div>
-    {{/with}}
-  </template>
+    </div>
+
+    <div class="container">
+      <div class="card-deck mb-3 text-center" style="align-content: center;">
+        <h3>{{cash}}원</h3>
+        <div class="input-group mb-3 col-md-3">
+          <input class="form-control" type="number" id="inp-cash"/>
+        </div>
+        <button id="btn-charge">충전</button>
+      </div>
+    </div>
+
+</template>
