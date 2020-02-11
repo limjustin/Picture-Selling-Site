@@ -10,7 +10,7 @@ Template.ex_file_upload.helpers({
     return this.createdAt.toStringHMS();
   },
   link: function() {
-    // 저장 된 이미지 링크를 반환
+    // 저장 된 이미지 링크를 반환함
     return DB_FILES.findOne({_id: this.file_id}).link();
   }
 });
