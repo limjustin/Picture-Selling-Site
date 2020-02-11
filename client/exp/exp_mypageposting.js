@@ -1,7 +1,7 @@
-FlowRouter.template('/ex_mypageposting/:_id', 'ex_mypageposting');
+FlowRouter.template('/exp_mypageposting/:_id', 'exp_mypageposting');
 
 
-Template.ex_mypageposting.onRendered(function() {
+Template.exp_mypageposting.onRendered(function() {
   $('#editor').summernote({
     popover: {},
     minHeight: 200,
@@ -9,7 +9,7 @@ Template.ex_mypageposting.onRendered(function() {
   });
 });
 
-Template.ex_mypageposting.helpers({
+Template.exp_mypageposting.helpers({
   post: function() {
     var _id = FlowRouter.getParam('_id'); // FlowRouter.getParam 사실 이해 안감
     if(_id === 'newPosting') {
@@ -27,7 +27,7 @@ Template.ex_mypageposting.helpers({
   }
 });
 
-Template.ex_mypageposting.events({
+Template.exp_mypageposting.events({
   'click #btn-save': function() {
     var file = $('#inp-file').prop('files')[0];
     var file_id = DB_FILES.insertFile(file);

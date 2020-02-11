@@ -50,16 +50,33 @@ Template.ex_uploadpicture.events({
     // 파일 먼저 저장
     var file = $('#inp-file').prop('files')[0];   // 화면에서 선택 된 파일 가져오기
     var file_id = DB_FILES.insertFile(file);
+
+    // 사진 부가 설명 저장
+    var name = $('#inp-name').val();
+    var tags = $('#inp-tags').val();
+    var price = $('#inp-price').val();
+    var place = $('#inp-place').val();
+    var introduce = $('#inp-introduce').val();
+
     // DB 저장 시 파일의 _id와 name을 함께 저장
-    DB_UPLOAD.insert({    // 컨텐츠 DB에 저장
+    DB_PIC.insert({    // 컨텐츠 DB에 저장
       createdAt: new Date(),          // 저장 시각
-      content: $('#ta-article').val(),// 저장 컨텐츠
-      file_id: file_id                // 저장 된 파일의 _id
+      file_id: file_id,                // 저장 된 파일의 _id
+      name: name,
+      tags: tags,
+      price: price,
+      place: place,
+      introduce: introduce
     });
+
     // 저장 후 화면 정리
     $('#inp-file').val('');
-    $('#ta-article').val('');
-    alert('저장 되었습니다.');
+    $('#inp-name').val('');
+    $('#inp-tags').val('');
+    $('#inp-price').val('');
+    $('#inp-place').val('');
+    $('#inp-introduce').val('');
+    alert('저장하였습니다.');
   },
   'click #btn-remove': function() {
     if(confirm('삭제 하시겠습니까?')) {

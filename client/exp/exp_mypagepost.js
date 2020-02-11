@@ -1,13 +1,13 @@
-FlowRouter.template('/ex_mypage/:_id', 'ex_mypage');
+FlowRouter.template('/exp_mypagepost/:_id', 'exp_mypagepost');
 
-Template.ex_mypage.onCreated(function() {
+Template.exp_mypagepost.onCreated(function() {
   var _id = FlowRouter.getParam('_id')
   DB_POSTS.update({_id: _id}, {
     $inc: {readCount: 1}  //조회수 1 증가 업데이트
   });
 });
 
-Template.ex_mypage.helpers({
+Template.exp_mypagepost.helpers({
   board: function() {
     var _id = FlowRouter.getParam('_id')
     return Meteor.users.findOne({_id: _id}); // users랑 user()의 차이점?
