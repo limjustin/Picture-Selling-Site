@@ -20,17 +20,10 @@ Template.ex_mypageposting.helpers({
       $('#editor').summernote('reset')
     });
 
-<<<<<<< HEAD
     return Meteor.users.findOne({_id: _id});
   },
   link: function() { // 저장된 이미지 링크 반환
     return Meteor.user().profile.profile_picture.link();
-=======
-    return Meteor.users.findOne({_id: _id}); // 확실함?
-  },
-  link: function() {
-    return DB_FILES.findOne({_id: this.file_id}).link();
->>>>>>> master
   }
 });
 
@@ -47,7 +40,6 @@ Template.ex_mypageposting.events({
     var _id = FlowRouter.getParam('_id');
     if( _id === 'newPosting') {
 
-<<<<<<< HEAD
     } else { // newPosting 아니니까 여기로 항상 실행되네 이거는 확인
       // var post = Meteor.users.findOne({_id: _id});
       // post.profile.profile_picture = file_id;
@@ -60,9 +52,6 @@ Template.ex_mypageposting.events({
 
       ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-=======
-    } else {
->>>>>>> master
       var userInfo = Meteor.user();
       Meteor.users.update({_id: userInfo._id}, {
         $set: {

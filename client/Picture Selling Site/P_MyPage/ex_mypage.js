@@ -10,18 +10,10 @@ Template.ex_mypage.onCreated(function() {
 Template.ex_mypage.helpers({
   board: function() {
     var _id = FlowRouter.getParam('_id')
-<<<<<<< HEAD
     return Meteor.users.findOne({_id: _id});
   },
   link: function() {
     return Meteor.user().profile.profile_picture;
-=======
-    return Meteor.users.findOne({_id: _id}); // users랑 user()의 차이점?
-  },
-  link: function() {
-    // return DB_FILES.findOne({_id: this.file_id}).link();
-    return Meteor.user().profile.profile_picture; // 일단 .link() 붙는걸로 가자
->>>>>>> master
   },
   name: function() {
     return Meteor.user().profile.name;
@@ -29,9 +21,5 @@ Template.ex_mypage.helpers({
   title: function() {
     return Meteor.user().profile.introduce;
   }
-<<<<<<< HEAD
 });
 
-=======
-});
->>>>>>> master
