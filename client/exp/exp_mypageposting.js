@@ -1,7 +1,7 @@
-FlowRouter.template('/ex_mypageposting/:_id', 'ex_mypageposting');
+FlowRouter.template('/exp_mypageposting/:_id', 'exp_mypageposting');
 
 
-Template.ex_mypageposting.onRendered(function() {
+Template.exp_mypageposting.onRendered(function() {
   $('#editor').summernote({
     popover: {},
     minHeight: 200,
@@ -9,7 +9,7 @@ Template.ex_mypageposting.onRendered(function() {
   });
 });
 
-Template.ex_mypageposting.helpers({
+Template.exp_mypageposting.helpers({
   post: function() {
     var _id = FlowRouter.getParam('_id'); // FlowRouter.getParam 사실 이해 안감
     if(_id === 'newPosting') {
@@ -20,21 +20,14 @@ Template.ex_mypageposting.helpers({
       $('#editor').summernote('reset')
     });
 
-<<<<<<< HEAD
-    return Meteor.users.findOne({_id: _id});
-  },
-  link: function() { // 저장된 이미지 링크 반환
-    return Meteor.user().profile.profile_picture.link();
-=======
     return Meteor.users.findOne({_id: _id}); // 확실함?
   },
   link: function() {
     return DB_FILES.findOne({_id: this.file_id}).link();
->>>>>>> master
   }
 });
 
-Template.ex_mypageposting.events({
+Template.exp_mypageposting.events({
   'click #btn-save': function() {
     var file = $('#inp-file').prop('files')[0];
     var file_id = DB_FILES.insertFile(file);
@@ -47,22 +40,7 @@ Template.ex_mypageposting.events({
     var _id = FlowRouter.getParam('_id');
     if( _id === 'newPosting') {
 
-<<<<<<< HEAD
-    } else { // newPosting 아니니까 여기로 항상 실행되네 이거는 확인
-      // var post = Meteor.users.findOne({_id: _id});
-      // post.profile.profile_picture = file_id;
-      // post.profile.name = name;
-      // post.profile.introduce = title;
-
-      // // Meteor.user().profile.update(this_id, {$set : {profile_picture: file_id, name: name, introduce: title}}); // Meteor.users.profile을 66번째줄이랑 맞춰줘야할지 고민
-      // // DB_POSTS.update({_id: _id}, post);
-      // Meteor.user().profile.update({_id: Meteor.userId()},{$set : {profile_picture: file_id, name: name, introduce: title}});
-
-      ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-=======
     } else {
->>>>>>> master
       var userInfo = Meteor.user();
       Meteor.users.update({_id: userInfo._id}, {
         $set: {
