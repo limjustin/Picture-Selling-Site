@@ -2,7 +2,7 @@
   {{> ex_navbar}}
 
   {{#with board}}
-    <div id="ex_post" style="text-align: center; margin-top: 5rem;">
+    <div id="ex_post " style="text-align: center; margin-top: 5rem;">
       <img class="profiles" src="http://localhost:3000/cdn/storage/db_files/{{link}}/original/{{link}}.png" 
       onerror="this.src='/examples/default_picture.png'" style="border-radius: 100%; width: 150px; height: 150px;margin-bottom: 1rem;">
       <h3>{{name}}</h3>
@@ -10,6 +10,4 @@
       <a href="/ex_mypageposting/{{_id}}" class="btn btn-primary">수정</a>
     </div>
   {{/with}}
-  
-  {{> ex_footer}}
-</template> 
+</template>

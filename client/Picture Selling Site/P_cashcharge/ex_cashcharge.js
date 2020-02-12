@@ -18,6 +18,16 @@ Template.ex_cashcharge.helpers({
   });
 
   Template.ex_cashcharge.events({
+    'click #mybtn': function() {
+      var modal = document.getElementById('myModal');
+      var btn = document.getElementById("mybtn");
+      modal.style.display = "block";
+    },
+    'click #myclose': function() {
+      var modal = document.getElementById('myModal');
+      var span = document.getElementsByClassName("myclose")[0]; 
+      modal.style.display = "none";
+    },
     'click #btn-charge': function() {
       var input_cash = $('#inp-cash').val(); // input 값을 input_cash 변수에 저장
 
@@ -32,3 +42,14 @@ Template.ex_cashcharge.helpers({
       $('#inp-cash').val(''); // input 창 정리
     }
   });
+
+
+
+
+
+
+
+
+
+
+

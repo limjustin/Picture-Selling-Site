@@ -66,8 +66,7 @@ Template.ex_login_custom.events({
           profile_picture: 'default',
           name: 'user',
           introduce: 'Hello World!',
-          cash: 0,
-          cart: 0
+          cash: 0
         },
       }, function(err) { //사용자 생성 오류 시 처리 콜백 함수
         if (err) {

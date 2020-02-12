@@ -15,11 +15,11 @@ Template.ex_mypage.helpers({
   link: function() {
     return Meteor.user().profile.profile_picture;
   },
-    name: function() {
-      return Meteor.user().profile.name;
-    },
-    title: function() {
-      return Meteor.user().profile.introduce;
-    }
+  name: function() {
+    return Meteor.user().profile.name;
+  },
+  title: function() {
+    return Meteor.user().profile.introduce;
+  }
 });
 

@@ -1,7 +1,7 @@
 <template name="ex_navbar">
   <div id="ex_navbar">
     <nav class="navbar navbar-expand-md navbar-dark bg-dark text-right">
-      <a href="/ex_carousel"><img src="/examples/photo-camera.png" onerror="this.src='/examples/default_picture.png'" alt="" class="nav-logo" style="max-height: 40px;"></a>
+      <a href="/ex_carousel"><img src="/examples/photo-camera.png" class="nav-logo" style="max-height: 40px;"></a>
       <!-- <a href="/" class="navbar-brand">Codeasy</a> -->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -13,34 +13,34 @@
               <a class="btn btn-outline-primary" href="/ex_uploadpicture">사진 등록하기 <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="btn btn-outline-primary" href="/ex_mypagepost/{{link}}">마이페이지 <span class="sr-only">(current)</span></a>
+              <a class="btn btn-outline-primary" href="/ex_mypage/{{link}}">마이페이지 <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/ex_cashcharge">캐시 충전</a>
+              <a class="btn btn-outline-primary" href="/ex_cashcharge">캐시 충전</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/ex_cart">장바구니</a>
+              <a class="btn btn-outline-primary" href="/ex_cart">장바구니</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/ex_chatting">채팅</a>
+              <a class="btn btn-outline-primary" href="/ex_chatting">채팅</a>
             </li>
 
           {{else}}
             {{alert}}
             <li class="nav-item active">
-              <a class = "btn btn-outline-primary" href="/ex_login_custom" onclick="alert('로그인해라')">사진 등록하기 <span class="sr-only">(current)</span></a>
+              <a class = "btn btn-outline-primary" href="/ex_login_custom" onclick="alert('로그인 후 사용해주세요.')">사진 등록하기 <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class = "btn btn-outline-primary" href="/ex_login_custom" onclick="alert('로그인해라')">마이페이지 <span class="sr-only">(current)</span></a>
+              <a class = "btn btn-outline-primary" href="/ex_login_custom" onclick="alert('로그인 후 사용해주세요.')">마이페이지 <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/ex_login_custom">캐시 충전</a>
+              <a class = "btn btn-outline-primary" href="/ex_login_custom" onclick="alert('로그인 후 사용해주세요.')">캐시충전 <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/ex_login_custom">장바구니</a>
+              <a class = "btn btn-outline-primary" href="/ex_login_custom" onclick="alert('로그인 후 사용해주세요.')">장바구니 <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/ex_login_custom">채팅</a>
+              <a class = "btn btn-outline-primary" href="/ex_login_custom" onclick="alert('로그인 후 사용해주세요.')">채팅 <span class="sr-only">(current)</span></a>
             </li>
           
           {{/if}}
@@ -49,18 +49,18 @@
         <ul class="navbar-nav ml-auto">
           {{#if currentUser}}
           <li class="nav-item">
-            <img class="profiles" src="http://localhost:3000/cdn/storage/db_files/{{picture}}/original/{{picture}}.png" style="border-radius: 100%; margin-right: 1rem; width: 30px; height: 30px;">
+            <img class="profiles" src="http://localhost:3000/cdn/storage/db_files/{{link}}/original/{{link}}.png" onerror="this.src='/examples/default_picture.png'" style="border-radius: 100%; margin-top: 0.5rem; margin-right: 0.5rem; width: 30px; height: 30px;">
           </li>
           <li class="nav-item">
-            <small><h1 class="h6 mb-3" style="color:aliceblue; margin-top: 0rem;">{{currentUser.emails.[0].address}}님 &nbsp; </h1></small>
+            <small><h1 class="h6 mb-3" style="color:aliceblue; margin-right:1rem; margin-top: 1rem;">{{currentUser.emails.[0].address}}님 &nbsp; </h1></small>
           </li>
           <li class="nav-item">
             <!-- <button id="btn-logout" class="btn btn-lg btn-primary btn-block">Sign out</button> -->
-            <button id="btn-ex_carousel" onclick="location.href='/ex_carousel'" class="btn btn-lg btn-outline-primary btn-block">sign out</button>
+            <button id="btn-ex_carousel" onclick="location.href='/ex_carousel'" class="btn btn-lg btn-primary">sign out</button>
           </li>
           {{else}}
           <li class="nav-item">
-            <small><a class="btn btn-outline-primary" href="/ex_login_custom">로그인</a></small>
+            <small><a class="btn btn-primary" href="/ex_login_custom">로그인</a></small>
           </li>
           {{/if}}
 
