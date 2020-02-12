@@ -19,6 +19,7 @@ Template.ex_login_custom.helpers({
     return Meteor.user().emails[0].address; //화면에 사용자의 이메일을 전달
   },
   isSignUpMode: function() {
+
     return Session.get('isSignUpMode'); // false : 로그인 true : 정보 받는 창
   },
   userInfo: function() {
