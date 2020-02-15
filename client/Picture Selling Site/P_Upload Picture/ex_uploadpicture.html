@@ -25,20 +25,23 @@
     <div style="margin-top: 6rem;">
     </div>
 
-    <form class = "box" method="post" action="ex_uploadpicture.html">
 
         <label style="font-size: large;">이름</label>
-        <input id="inp-name" type="email" required autofocus style="border-color: transparent transparent gray transparent; margin-left:0.5rem; margin-top: 1rem; margin-bottom: 1rem;"><br>
-        <label style="font-size: large;">태그</label>
-        <input id="inp-tags" type="email" required autofocus style="border-color: transparent transparent gray transparent; margin-left:0.5rem; margin-top: 1rem; margin-bottom: 1rem;"><br>
+        <input id="inp-name" type="text" required autofocus style="border-color: transparent transparent gray transparent; margin-left:0.5rem; margin-top: 1rem; margin-bottom: 1rem;"><br>
+        
+        <!-- <label style="font-size: large;">태그</label>
+        <input id="inp-tags" type="text" required autofocus style="border-color: transparent transparent gray transparent; margin-left:0.5rem; margin-top: 1rem; margin-bottom: 1rem;"><br> -->
+        
+        <input id="inp-tag" type="text">
+        <button id="btn-save-tag">태그등록</button><br>
+        
         <label style="font-size: large;">가격</label>
-        <input id="inp-price" type="email" required autofocus style="border-color: transparent transparent gray transparent; margin-left:0.5rem; margin-top: 1rem; margin-bottom: 1rem;"><br>
+        <input id="inp-price" type="text" required autofocus style="border-color: transparent transparent gray transparent; margin-left:0.5rem; margin-top: 1rem; margin-bottom: 1rem;"><br>
         <label style="font-size: large;">촬영 장소</label>
-        <input id="inp-place" type="email" required autofocus style="border-color: transparent transparent gray transparent; margin-left:0.5rem; margin-top: 1rem; margin-bottom: 1rem;"><br>
+        <input id="inp-place" type="text" required autofocus style="border-color: transparent transparent gray transparent; margin-left:0.5rem; margin-top: 1rem; margin-bottom: 1rem;"><br>
         <label style="font-size: large;">사진 설명</label>
-        <input id="inp-introduce" type="email" required autofocus style="border-color: transparent transparent gray transparent; margin-left:0.5rem; margin-top: 1rem; margin-bottom: 1rem;">
+        <input id="inp-introduce" type="text" required autofocus style="border-color: transparent transparent gray transparent; margin-left:0.5rem; margin-top: 1rem; margin-bottom: 1rem;">
     
-    </form>
 
     <button id="btn-save" class="btn btn-primary" stlye="width:100px">등록</button>
   </div>

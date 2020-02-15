@@ -1,6 +1,8 @@
 FlowRouter.template('/ex_uploadpicture', 'ex_uploadpicture');
 
 Template.ex_uploadpicture.onRendered(function() {
+  Session.set('tag_input', []);
+
   var upload = document.querySelector('#inp-file');
   var upload2 = document.querySelector('#preview');
 
@@ -42,10 +44,16 @@ Template.ex_uploadpicture.helpers({
   link: function() {
     // 저장 된 이미지 링크를 반환
     return DB_FILES.findOne({_id: this.file_id}).link();
-  }
+  },
 });
 
 Template.ex_uploadpicture.events({
+  'click #btn-save-tag': function(){
+    var tag_input = Session.get('tag_input');
+    tag_input.push($('#inp-tag').val());
+    Session.set('tag_input', tag_input);
+  },
+
   'click #btn-save': function(evt, inst) {
     // 파일 먼저 저장
     var file = $('#inp-file').prop('files')[0];   // 화면에서 선택 된 파일 가져오기
@@ -53,17 +61,21 @@ Template.ex_uploadpicture.events({
 
     // 사진 부가 설명 저장
     var name = $('#inp-name').val();
-    var tags = $('#inp-tags').val();
+    // var tags = $('#inp-tags').val();
     var price = $('#inp-price').val();
     var place = $('#inp-place').val();
     var introduce = $('#inp-introduce').val();
+
+    var tag_input = Session.get('tag_input');
+    tag_input.push($('#inp-tag').val());
+    Session.set('tag_input', tag_input);
 
     // DB 저장 시 파일의 _id와 name을 함께 저장
     DB_PIC.insert({    // 컨텐츠 DB에 저장
       createdAt: new Date(),          // 저장 시각
       file_id: file_id,                // 저장 된 파일의 _id
       name: name,
-      tags: tags,
+      tags: tag_input,
       price: price,
       place: place,
       introduce: introduce
