@@ -10,7 +10,6 @@ Template.ex_viewpicture.helpers({
     return DB_PIC.findOne({_id: _id});
   },
   link: function() {
-    // 사진 불러오는 코드
     return DB_FILES.findOne({_id: this.file_id}).link();
   },
 });
