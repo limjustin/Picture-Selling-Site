@@ -1,6 +1,8 @@
 <template name="ex_carousel">  
   {{> ex_navbar}}
   <div id="ex_carousel">
+    
+    <!-- 검색 창 -->
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
@@ -11,31 +13,19 @@
                 <p class="search__title">
                     사진을 검색하세요
                 </p>
-                <!-- <form method="post" name="formname"> -->
                 <input id="inp-search" class="search__input" type="text" placeholder="Search">
-                <!-- <button onclick="loadCode();">검색</button> -->
-                <!-- </form> -->
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    
+    <!-- 검색 결과로 나온 사진들이 list됨 -->
     {{#each tags}}
     <div class="col-md-4" data-automation="mosaic-grid">
       <div class="mb-4 shadow-sm">
         <a href="/ex_viewpicture/{{_id}}"><img src="{{link}}" alt="" class="card-img-top"></a>
-          <!-- <span aria-hidden="true">&times;</span>
-          <div class="card-body">
-          <p class="card-text">{{{content}}}</p>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="btn-group">
-              <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-              <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-            </div>
-            <small class="text-muted">{{createdAt}}</small>
-          </div>
-        </div> -->
       </div>
     </div>
     {{/each}}
