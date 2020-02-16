@@ -31,7 +31,7 @@ Template.ex_carousel.helpers({
     // },
     link: function() {
         // 저장 된 이미지 링크를 반환함
-        return DB_PIC.findOne({_id: this.file_id}).link();
+        return DB_FILES.findOne({_id: this.file_id}).link(); // 왜 DB_FILES임?
     }
 });
 

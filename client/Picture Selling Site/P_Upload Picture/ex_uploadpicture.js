@@ -1,8 +1,7 @@
 FlowRouter.template('/ex_uploadpicture', 'ex_uploadpicture');
 
 Template.ex_uploadpicture.onRendered(function() {
-  Session.set('tag_input', []);
-
+  Session.set('tag_arr', []);
   var upload = document.querySelector('#inp-file');
   var upload2 = document.querySelector('#preview');
 
@@ -30,6 +29,7 @@ Template.ex_uploadpicture.onRendered(function() {
 
       preview.appendChild(image);
   })
+
 });
 
 Template.ex_uploadpicture.helpers({
@@ -45,13 +45,31 @@ Template.ex_uploadpicture.helpers({
     // 저장 된 이미지 링크를 반환
     return DB_FILES.findOne({_id: this.file_id}).link();
   },
+  tag_list: function() { // 전체 Session을 다 띄워주는 역할
+    // return Session.get(tag_update);
+    return Session.get('tag_arr'); // 이게 아마 전체 세션 인듯
+  },
+  name: function() { // 받은 tag의 Session만 바로바로 띄워주는 역할
+    return $('#inp-tag').val(); // 이거는 부분 세션
+  },
 });
 
 Template.ex_uploadpicture.events({
   'click #btn-save-tag': function(){
-    var tag_input = Session.get('tag_input');
-    tag_input.push($('#inp-tag').val());
-    Session.set('tag_input', tag_input);
+    var tag_update = Session.get('tag_arr'); // 태그 등록 버튼을 누르면 tag에 session값 저장 처음에는 빈 배열
+    tag_update.push($('#inp-tag').val()); // input 값을 가져와서 빈 배열 tag에 추가
+    Session.set('tag_arr', tag_update); // Session 값을 tag로 대체
+  },
+
+  'click #btn-remove-tag': function() {
+    // 1. 해당하는 태그 값을 가져와야 함
+    // 2. 세션에서 해당하는 태그 값을 지워야함
+    // 3. 세션 빈 배열 없이 다시 업데이트
+    var tag_update = Session.get('tag_arr');
+    tag_update.pop();
+    Session.set('tag_arr', tag_update);
+
+    // 정 안되면 대체해도 됨 '' 이거로 근데 아마 검색할 때 걸릴꺼야 // 전체 검색도 가능할 듯?
   },
 
   'click #btn-save': function(evt, inst) {
@@ -66,16 +84,15 @@ Template.ex_uploadpicture.events({
     var place = $('#inp-place').val();
     var introduce = $('#inp-introduce').val();
 
-    var tag_input = Session.get('tag_input');
-    tag_input.push($('#inp-tag').val());
-    Session.set('tag_input', tag_input);
+    var tag_update = Session.get('tag_arr');
+    Session.set('tag_arr', tag_update);
 
     // DB 저장 시 파일의 _id와 name을 함께 저장
     DB_PIC.insert({    // 컨텐츠 DB에 저장
-      createdAt: new Date(),          // 저장 시각
-      file_id: file_id,                // 저장 된 파일의 _id
+      createdAt: new Date(),
+      file_id: file_id,
       name: name,
-      tags: tag_input,
+      tags: tag_update, // 최종 tag의 Session을 담아
       price: price,
       place: place,
       introduce: introduce
