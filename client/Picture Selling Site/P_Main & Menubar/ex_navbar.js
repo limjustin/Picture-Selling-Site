@@ -23,5 +23,10 @@ Template.ex_navbar.events({
     }
 });
 
-// 만약에 있으면 링크 첫번째 꺼를 불러오고
-// 만약에 없으면 그냥 mypage창
+Template.ex_navbar.events({
+
+    'click #btn-ex_carousel': function() {
+        Meteor.logout();
+        alert("로그아웃 되었습니다.");
+    }
+});
