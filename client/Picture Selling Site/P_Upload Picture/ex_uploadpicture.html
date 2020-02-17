@@ -1,13 +1,14 @@
 <template name="ex_uploadpicture">
   {{> ex_navbar}}
 
-  <div id="ex_file_upload" style="width : 50%; float: left;">
-    
+  <!-- 사진 업로드 부분 -->
+  <div id="ex_file_upload" style="width : 50%; float: left; text-align: center;">
     <div style="margin-top: 6rem;">
     </div>
 
     <form class = "box" style="align-content: center;">
     <div class="container">
+      <!-- 사진 미리보기 부분 (비어있는 부분 만들어줬기 때문에 그 자리에 사진 미리보기가 들어가는 것임) -->
       <div id = "preview">
 
       </div>
@@ -18,28 +19,35 @@
       </p>
     </div>
   </form>
-
   </div>
 
-  <div style="width : 50%; float: right;">
+  <!-- 상세정보 입력창 부분 -->
+  <div style="width : 50%; float: right;" class="input">
+
+    <!-- 여백 -->
     <div style="margin-top: 6rem;">
     </div>
 
-    <form class = "box" method="post" action="ex_uploadpicture.html">
+    <!-- 사진 상세정보 입력창 -->
+    <label style="font-size: large;">이름</label>
+    <input id="inp-name" type="text" required autofocus><br>
 
-        <label style="font-size: large;">이름</label>
-        <input id="inp-name" type="email" required autofocus style="border-color: transparent transparent gray transparent; margin-left:0.5rem; margin-top: 1rem; margin-bottom: 1rem;"><br>
-        <label style="font-size: large;">태그</label>
-        <input id="inp-tags" type="email" required autofocus style="border-color: transparent transparent gray transparent; margin-left:0.5rem; margin-top: 1rem; margin-bottom: 1rem;"><br>
-        <label style="font-size: large;">가격</label>
-        <input id="inp-price" type="email" required autofocus style="border-color: transparent transparent gray transparent; margin-left:0.5rem; margin-top: 1rem; margin-bottom: 1rem;"><br>
-        <label style="font-size: large;">촬영 장소</label>
-        <input id="inp-place" type="email" required autofocus style="border-color: transparent transparent gray transparent; margin-left:0.5rem; margin-top: 1rem; margin-bottom: 1rem;"><br>
-        <label style="font-size: large;">사진 설명</label>
-        <input id="inp-introduce" type="email" required autofocus style="border-color: transparent transparent gray transparent; margin-left:0.5rem; margin-top: 1rem; margin-bottom: 1rem;">
+    <!-- 태그 입력 및 입력한 태그들이 each문으로 돌아감 -->
+    <label style="font-size: large;">태그</label>
+    {{#each tag_list}}
+      <span style="background-color: #00b992;">{{name}}<button id="btn-remove-tag" style="background-color: transparent; border-color: transparent;">X</button></span>
+    {{/each}} <br>
+    <input id="inp-tag" type="text" style="margin-left: 2.5rem; width: 70px; border-color: black;">
     
-    </form>
-
-    <button id="btn-save" class="btn btn-primary" stlye="width:100px">등록</button>
+    <button id="btn-save-tag">태그등록</button><br>
+    <label style="font-size: large;">가격</label>
+    <input id="inp-price" type="text" required autofocus><br>
+    <label style="font-size: large;">촬영 장소</label>
+    <input id="inp-place" type="text" required autofocus><br>
+    <label style="font-size: large;">사진 설명</label>
+    <input id="inp-introduce" type="text" required autofocus><br>
+    
+    <button id="btn-save" class="btn btn-primary" stlye="width:100px" style="background-color: #00b992; border-color: transparent; color: white;">등록</button>
+    <button id="btn-back" onClick="location.href='/ex_carousel'" class="btn btn-primary" stlye="width:100px" style="background-color: grey; border-color: transparent; color: white;">뒤로가기</button>
   </div>
 </template>

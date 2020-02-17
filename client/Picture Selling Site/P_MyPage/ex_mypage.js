@@ -14,7 +14,7 @@ Template.ex_mypage.helpers({
   },
   link: function() {
     // return DB_FILES.findOne({_id: this.file_id}).link();
-    return Meteor.user().profile.profile_picture; // 일단 .link() 붙는걸로 가자
+    return Meteor.user().profile.profile_picture;
   },
   name: function() {
     return Meteor.user().profile.name;
