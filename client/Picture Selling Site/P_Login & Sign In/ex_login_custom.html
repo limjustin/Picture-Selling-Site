@@ -22,18 +22,6 @@
           </div>
           <button id="btn-signUp" class="btn btn-lg btn-outline-dark btn-block">회원가입</button>
           <button id="btn-back" class="btn btn-lg btn-primary btn-block">뒤로가기</button>
-        {{else}} <!-- 회원가입모드가 아닐 경우 (로그인 모드)-->
-          <h1 class="h3 mb-3 font-weight-normal" >로그인</h1>
-          <input id="inp-email" type="email" class="form-control mb-1" placeholder="Email address" required autofocus>
-          <input id="inp-password" type="password" class="form-control mb-1" placeholder="Password" required>
-          <div class="checkbox mb-3">
-            <label>
-              <input type="checkbox" value="remember-me"> Remember me
-            </label>
-          </div>
-          <button id="btn-signIn" class="btn btn-lg btn-outline-primary btn-block">로그인</button>
-          <button id="btn-signUpMode" class="btn btn-lg btn-primary btn-block">회원가입</button>
-          {{/if}}
 
         {{else}} <!-- 회원가입모드가 아닐 경우 : 로그인 모드!! -->
           <h1 class="h3 mb-3 font-weight-normal">로그인</h1>
@@ -46,7 +34,7 @@
         {{/if}}
 
       {{/if}} <!-- if 열었으면 닫아주어야 함. -->
-      <!-- <p class="mt-5 mb-3 text-muted">&copy; Copyright on Codeasy</p> -->
+>
     </div>
   </div>
 </template>

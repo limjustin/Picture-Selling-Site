@@ -33,11 +33,8 @@ Template.ex_mypageposting.events({
     var file_id = DB_FILES.insertFile(file);
     var name = $('#inp-name').val();
     var title = $('#inp-title').val();
-<<<<<<< HEAD
-=======
     var email = $('#inp-email').val();
   
->>>>>>> origin/2020-02-17
 
     if(!title) {
       return alert('제목은 반드시 입력 해 주세요.');
@@ -51,12 +48,7 @@ Template.ex_mypageposting.events({
         $set: {
           'profile.profile_picture': file_id,
           'profile.name': name,
-<<<<<<< HEAD
           'profile.introduce': title
-=======
-          'profile.introduce': title,
-          'profile.email': email
->>>>>>> origin/2020-02-17
         }
       });
 
