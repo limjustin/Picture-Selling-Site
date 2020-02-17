@@ -11,7 +11,7 @@ Template.ex_mypageposting.onRendered(function() {
 
 Template.ex_mypageposting.helpers({
   post: function() {
-    var _id = FlowRouter.getParam('_id');
+    var _id = FlowRouter.getParam('_id'); // FlowRouter.getParam 사실 이해 안감
     if(_id === 'newPosting') {
       return {};    //새글 작성일때는 화면에 비어있는 데이터를 제공.
     }
@@ -20,10 +20,10 @@ Template.ex_mypageposting.helpers({
       $('#editor').summernote('reset')
     });
 
-    return Meteor.users.findOne({_id: _id});
+    return Meteor.users.findOne({_id: _id}); // 확실함?
   },
-  link: function() { // 저장된 이미지 링크 반환
-    return Meteor.user().profile.profile_picture.link();
+  link: function() {
+    return DB_FILES.findOne({_id: this.file_id}).link();
   }
 });
 
@@ -33,6 +33,8 @@ Template.ex_mypageposting.events({
     var file_id = DB_FILES.insertFile(file);
     var name = $('#inp-name').val();
     var title = $('#inp-title').val();
+    var email = $('#inp-email').val();
+  
 
     if(!title) {
       return alert('제목은 반드시 입력 해 주세요.');
@@ -40,24 +42,14 @@ Template.ex_mypageposting.events({
     var _id = FlowRouter.getParam('_id');
     if( _id === 'newPosting') {
 
-    } else { // newPosting 아니니까 여기로 항상 실행되네 이거는 확인
-      // var post = Meteor.users.findOne({_id: _id});
-      // post.profile.profile_picture = file_id;
-      // post.profile.name = name;
-      // post.profile.introduce = title;
-
-      // // Meteor.user().profile.update(this_id, {$set : {profile_picture: file_id, name: name, introduce: title}}); // Meteor.users.profile을 66번째줄이랑 맞춰줘야할지 고민
-      // // DB_POSTS.update({_id: _id}, post);
-      // Meteor.user().profile.update({_id: Meteor.userId()},{$set : {profile_picture: file_id, name: name, introduce: title}});
-
-      ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+    } else {
       var userInfo = Meteor.user();
       Meteor.users.update({_id: userInfo._id}, {
         $set: {
           'profile.profile_picture': file_id,
           'profile.name': name,
-          'profile.introduce': title
+          'profile.introduce': title,
+          'profile.email': email
         }
       });
 

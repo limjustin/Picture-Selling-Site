@@ -22,6 +22,3 @@ Template.ex_navbar.events({
         alert("로그아웃 되었습니다.");
     }
 });
-
-// 만약에 있으면 링크 첫번째 꺼를 불러오고
-// 만약에 없으면 그냥 mypage창
