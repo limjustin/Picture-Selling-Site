@@ -1,0 +1,24 @@
+<template name="ex_cashcharge">
+  {{> ex_navbar}}
+
+    <div id="ex_cashcharge">
+      <div id="userinfo" style="text-align: center; margin-top: 5rem;">
+          <img class="profiles" onerror="this.src='/examples/default_picture.png'" src="http://localhost:3000/cdn/storage/db_files/{{link}}/original/{{link}}.png" style="border-radius: 100%; width: 150px; height: 150px;margin-bottom: 1rem;">
+          <h3>{{name}}</h3>
+          <h3>{{cash}}원</h3>
+          <button id="mybtn" class="btn btn-primary">충전</button>
+
+          <div id="myModal" class="modal">
+            <div class="modal-content" style="text-align: center; margin-top: 5rem;">
+              <span class="close" id="myclose" style="text-align:right;">&times;</span>                                                               
+              <p style="text-align: center;">잔액 : {{cash}}원</p>              
+              <div class="input-group mb-3 col-md-3">
+                <input class="form-control" type="number" id="inp-cash" style="text-align:center; display:block; margin: 0 auto;"/>
+              </div>
+              <button id="btn-charge" class="btn btn-primary" stlye="width:100px">충전하기</button>
+            </div>
+          </div>
+
+      </div>
+    </div>
+</template>
