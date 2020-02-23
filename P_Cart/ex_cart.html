@@ -12,6 +12,7 @@
         
         <table class="table table-striped">
           
+          <!-- 위에 목록 부분 -->
           <thead style="border-top-style: groove; border-bottom-style: groove;">
           <tr>
             <th scope="col" style="text-align: center;">선택</th>
@@ -22,9 +23,11 @@
           </tr>
           </thead>
 
+          <!-- 내용 부분 -->
           <tbody>
-            <!-- 보드안에 태그넣어야할듯 -->
+          <!-- 장바구니 전체 목록 한번 불러오고 -->
           {{#each cart}}
+            <!-- 이제는 각각의 요소들에서 내용 뽑아내기 -->
             {{#each incart}}
               <tr>
                 <td style="text-align: center;"><input type="checkbox" id="input_check" value1="{{_id}}" value2="{{price}}"></td>
@@ -37,6 +40,7 @@
           {{/each}}
           </tbody>
 
+          <!-- 합계 나오는 줄 -->
           <thead style="border-top-style: groove; border-bottom-style: groove;">
             <tr>
               <th scope="col" style="text-align: center;">Total</th>
@@ -45,14 +49,16 @@
               <th scope="col" style="text-align: center;"></th>
               <th scope="col" style="text-align: center;">{{sum}}</th>
             </tr>
-            </thead>
+          </thead>
 
         </table>
 
+        <!-- 장바구니에서 구매하기 버튼 -->
         <div style="margin-left: 92%">        
           <button id="btn-buyincart" class="btn btn-primary" stlye="width:100px" style="background-color: rgb(54, 86, 178); border-color: transparent; color: white;">구매하기</button>      
         </div>
 
       </div>
+
     </div>
   </template>

@@ -20,21 +20,21 @@
         </div>
       </div>
     </div>
+
     <div class="container">
       <div class="row">
+
       <!-- 검색 결과로 나온 사진들이 list됨 -->
         {{#each tags}}
           <div class="col-md-4">
             <div class="mb-4 shadow-sm">
-              <!-- <a href="/ex_viewpicture/{{_id}}"><img src="{{link}}" alt="" class="card-img-top"></a> -->
-
               <button id="mybtn" value="{{link}}" style="border-color: transparent; background-color: transparent;">
                 <img src="{{link}}" alt="" class="card-img-top">
               </button>
-
             </div>
           </div>
           
+          <!-- modal창에 불러올 정보들이 each tags안에 있기 때문에 일부러 반복문 안에 넣음 -->
           <div id="myModal" class="modal">
             <div class="modal-content">
               <img src="{{modal_picture}}" alt="" class="card-img-top" style="display: block; margin: 0px auto;">
@@ -44,12 +44,9 @@
               </div>
             </div>
           </div>
-
         {{/each}}
+
       </div>
     </div>
-
-
-
   </div>
 </template>
