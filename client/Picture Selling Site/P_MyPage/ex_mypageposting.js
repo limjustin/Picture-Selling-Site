@@ -28,37 +28,57 @@ Template.ex_mypageposting.helpers({
 });
 
 Template.ex_mypageposting.events({
-  'click #btn-save': function() {
-    var file = $('#inp-file').prop('files')[0];
+  'click #btn-save': function() { 
+
+    var file = $('#inp-file').prop('files')[0]; //프사
     var file_id = DB_FILES.insertFile(file);
-    var name = $('#inp-name').val();
-    var title = $('#inp-title').val();
-    var email = $('#inp-email').val();
-  
+    // var name = $('#inp-name').val(); //유저이름(삭제)
+    var title = $('#inp-title').val(); //자기소개
+    var email = $('#inp-email').val(); //이메일
+    var oldpassword = $('inp-oldpassword').val(); //이전 비번
+    var newpassword = $('inp-newpassword').val(); //새로운 비번
+    var newpasswordconfirm = $('inp-newpasswordconfirm').val(); //새로운 비번 확인
 
     if(!title) {
-      return alert('제목은 반드시 입력 해 주세요.');
+      return alert('자기소개를 반드시 입력 해 주세요.');
     }
     var _id = FlowRouter.getParam('_id');
     if( _id === 'newPosting') {
 
-    } else {
+    }
+   else {
       var userInfo = Meteor.user();
       Meteor.users.update({_id: userInfo._id}, {
         $set: {
           'profile.profile_picture': file_id,
           'profile.name': name,
-          'profile.introduce': title
+          'profile.introduce': title,
+          'emails.0.address' : email
         }
-      });
-
-    }
-
+      }
+      )}
+      
+     if(newpassword.val() === newpasswordconfirm.val()) {
+      Accounts.changePassword(oldpassword.val(), newpassword.val(), function(err){
+        if(err){
+            // console.log(err);
+            return alert("비밀번호가 일치하지 않습니다.")
+        } else {
+          $('#inp-newpassword').val('');
+        }
+      })
+     
+  
     alert('저장하였습니다.');
     $('#inp-file').val(''); // 이거 추가
-    $('#inp-name').val('');
+    // $('#inp-name').val('');
     $('#inp-title').val('');
+    $('#inp-email').val('');
+    // $('#inp-oldpassword').val('');
+    // $('#inp-newpassword').val('');
+    $('#inp-newpasswordconfirm').val('');
     $('#editor').summernote('reset');
     window.history.back();
-  },
+  }
+}
 })

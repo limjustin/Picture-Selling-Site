@@ -23,10 +23,3 @@ Template.ex_navbar.events({
     }
 });
 
-Template.ex_navbar.events({
-
-    'click #btn-ex_carousel': function() {
-        Meteor.logout();
-        alert("로그아웃 되었습니다.");
-    }
-});

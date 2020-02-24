@@ -32,9 +32,7 @@ Template.ex_login_custom.events({
   'click #btn-signIn': function() {
     var email = $('#inp-email').val();
     var password = $('#inp-password').val();
-    DB_PIC.insert({
-      tags: ['야경', '바다', '수상스포츠']
-    })
+    
     Meteor.loginWithPassword(email, password, function(err) { //로그 오류 발생 시 처리 콜백 함수
       if (err) {
         alert(err);
@@ -85,7 +83,7 @@ Template.ex_login_custom.events({
           // mypage 정보에 필요한 정보들
           profile_picture: 'default',
           name: 'user',
-          introduce: 'Hello World!',
+          introduce: '(자기소개 입력 안함)',
           cash: 10000
         },
         // cash : 10000

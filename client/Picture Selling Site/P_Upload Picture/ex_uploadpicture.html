@@ -35,7 +35,7 @@
     <!-- 태그 입력 및 입력한 태그들이 each문으로 돌아감 -->
     <label style="font-size: large;">태그</label>
     {{#each tag_list}}
-      <span style="background-color: #00b992;">{{name}}<button id="btn-remove-tag" style="background-color: transparent; border-color: transparent;">X</button></span>
+      <span style="background-color: #00b992;">{{name}}<button id="btn-remove-tag" value={{name}} style="background-color: transparent; border-color: transparent;">X</button></span>
     {{/each}} <br>
     <input id="inp-tag" type="text" style="margin-left: 2.5rem; width: 70px; border-color: black;">
     
