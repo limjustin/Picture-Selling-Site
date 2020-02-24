@@ -1,4 +1,23 @@
 <template name="ex_cashcharge">
+  <script>
+    function onlyNumber(event){
+      event = event || window.event;
+      var keyID = (event.which) ? event.which : event.keyCode;
+      if ( (keyID >= 48 && keyID <= 57) || (keyID >= 96 && keyID <= 105) || keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39 ) 
+          return;
+      else
+          return false;
+    }
+   
+    function removeChar(event) {
+      event = event || window.event;
+      var keyID = (event.which) ? event.which : event.keyCode;
+      if ( keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39 ) 
+          return;
+      else
+          event.target.value = event.target.value.replace(/[^0-9]/g, "");
+    }
+  </script>
   {{> ex_navbar}}
 
     <div id="ex_cashcharge">
@@ -9,13 +28,13 @@
           <button id="mybtn" class="btn btn-primary">충전</button>
 
           <div id="myModal" class="modal">
-            <div class="modal-content" style="text-align: center; margin-top: 5rem;">
-              <span class="close" id="myclose" style="text-align:right;">&times;</span>                                                               
-              <div style="text-align: center; font-size: 25px; font-weight: 600;">잔액 : {{cash}}원</div>              
+            <div class="modal-content" style="text-align: center;">
+              <span class="close" id="myclose" style="width: 20px; margin-left: 90%;">&times;</span>                                                               
+              <div style="text-align: center; font-size: 25px; font-weight: 600; margin-bottom: 10px;">잔액 : {{cash}}원</div>              
               <div>
-                <input class="form-control" type="number" id="inp-cash" style="text-align:center; display:block; margin: 0 auto; width: 300px;"/>
+                <input class="form-control" type="text" id="inp-cash" style="border-color: transparent; text-align:center; display:block; margin: 0 auto; width: 200px;" onkeydown='return onlyNumber(event)' onkeyup='removeChar(event)'/>
               </div>
-              <button id="btn-charge" class="btn btn-primary" style="width:50%;margin-left: 25%;margin-right: 0.27rem;margin-top: 1rem;background-color: grey;border-color: transparent;color: white;">충전하기</button>
+              <button id="btn-charge" class="btn btn-primary" style="width:80%; margin-left: 10%;margin-right: 0.27rem;margin-top: 1rem;background-color: grey;border-color: transparent;color: white;">충전하기</button>
             </div>
           </div>
 

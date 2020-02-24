@@ -1,15 +1,42 @@
 <template name="ex_mypage">
   {{> ex_navbar}}
-
-  {{#with board}}
-    <div id="ex_post" style="text-align: center; margin-top: 5rem;">
-      <img class="profiles" src="http://localhost:3000/cdn/storage/db_files/{{link}}/original/{{link}}.png" 
-      onerror="this.src='/examples/default_picture.png'" style="border-radius: 100%; width: 150px; height: 150px;margin-bottom: 1rem;">
-      <h3>{{name}}</h3>
-      <div style="margin-bottom: 1rem;">{{title}}</div>
-      <a href="/ex_mypageposting/{{_id}}" class="btn btn-primary">수정</a>
+  <div class="container">
+    <div class="card-deck mb-3 text-center">
+      <div class="card mb-4 shadow-sm">
+        {{#with board}}
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title">업로드한 사진 수</h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <a>(업로드한 사진 수 들어갈 자리)</a>
+            <br>
+          </ul>
+          <!-- <button type="button" onClick="location.href='/ex_mypagepl'" class="btn btn-lg btn-block btn-primary">목록</button> -->
+          <a class="btn btn-primary" href="/ex_mypagepl/{{_id}}">목록</a>
+      </div>
+      {{/with}}
+      <div class="card mb-4 shadow-sm" style="line-height: 1rem;">
+        {{#with board}}
+        <div id="ex_post text-center">
+          <img class="profiles" src="http://localhost:3000/cdn/storage/db_files/{{link}}/original/{{link}}.png" 
+          onerror="this.src='/examples/default_picture.png'" style="border-radius: 100%; width: 150px; height: 150px;margin-bottom: 1rem;"><br>
+          <a href="mailto:#">{{currentUser.emails.[0].address}}</a>
+          <div style="margin-bottom: 1rem;">{{title}}</div>
+          <a href="/ex_mypageposting/{{_id}}" class="btn btn-primary">수정</a>
+        </div>
+        {{/with}}  
+      </div>
+      {{#with board}}
+      <div class="card mb-4 shadow-sm">
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title">구매한 사진 수</h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <a>(구매한 사진 수 들어갈 자리)</a>
+          </ul>
+          <a class="btn btn-primary" href="/ex_mypagepl2/{{_id}}">목록</a>
+        </div>
+      </div>
+      {{/with}}
     </div>
-  {{/with}}
-  
-  {{> ex_footer}}
-</template>
+  </div>
+  </div>>
+</template> 

@@ -32,11 +32,19 @@
         <label style="font-size: large;">사용자 정보</label>
         <div>{{userInfo}}</div><br>
 
+        {{#if currentUser}}
         <div style="float: right; margin-right: 20%;">
-        <button id="btn-cart" class="btn btn-primary" stlye="width:100px" style="background-color: rgb(168, 74, 231); border-color: transparent; color: white;">장바구니에 담기</button>
-        <button id="btn-buy" class="btn btn-primary" stlye="width:100px" style="background-color: #00b992; border-color: transparent; color: white;">구매하기</button>
-        <button id="btn-back" onClick="location.href='/ex_carousel'" class="btn btn-primary" stlye="width:100px" style="background-color: grey; border-color: transparent; color: white;">뒤로가기</button>
+            <button id="btn-cart" class="btn btn-primary" stlye="width:100px" style="background-color: rgb(168, 74, 231); border-color: transparent; color: white;">장바구니에 담기</button>
+            <button id="btn-buy" class="btn btn-primary" stlye="width:100px" style="background-color: #00b992; border-color: transparent; color: white;">구매하기</button>
+            <button id="btn-back" onClick="location.href='/ex_carousel'" class="btn btn-primary" stlye="width:100px" style="background-color: grey; border-color: transparent; color: white;">뒤로가기</button>
         </div>
+        {{else}}
+        <div style="float: right; margin-right: 20%;">
+            <!-- <button id="btn-cart" class="btn btn-primary" stlye="width:100px" style="background-color: rgb(168, 74, 231); border-color: transparent; color: white;">장바구니에 담기</button>
+            <button id="btn-buy" class="btn btn-primary" stlye="width:100px" style="background-color: #00b992; border-color: transparent; color: white;">구매하기</button> -->
+            <button id="btn-back" onClick="location.href='/ex_carousel'" class="btn btn-primary" stlye="width:100px" style="background-color: grey; border-color: transparent; color: white;">뒤로가기</button>
+        </div>
+        {{/if}}
 
         <!-- modal 팝업 창 -->
         <div id="myModal" class="modal">

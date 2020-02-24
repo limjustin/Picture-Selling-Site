@@ -71,10 +71,10 @@ Template.ex_modalpicture.events({
     // 구매하기 버튼을 누르면 modal 창을 띄워줌
     var modal = document.getElementById('myModal');
     modal.style.display = "block";
-},
+  },
 
   'click #myclose': function() {
     var modal = document.getElementById('myModal');
     modal.style.display = "none";
-},
+  },
 });

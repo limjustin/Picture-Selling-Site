@@ -28,7 +28,7 @@
           <!-- 장바구니 전체 목록 한번 불러오고 -->
           {{#each cart}}
             <!-- 이제는 각각의 요소들에서 내용 뽑아내기 -->
-            {{#each incart}}
+            {{#with incart}}
               <tr>
                 <td style="text-align: center;"><input type="checkbox" id="input_check" value1="{{_id}}" value2="{{price}}"></td>
                 <td style="text-align: center;">{{cart_number}}</td>
@@ -36,7 +36,7 @@
                 <td style="text-align: center;">{{name}}</td>
                 <td style="text-align: center;">{{price}}</td>
               </tr>
-            {{/each}}
+            {{/with}}
           {{/each}}
           </tbody>
 

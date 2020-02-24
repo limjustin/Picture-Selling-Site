@@ -1,4 +1,23 @@
 <template name="ex_uploadpicture">
+  <script>
+    function onlyNumber(event){
+      event = event || window.event;
+      var keyID = (event.which) ? event.which : event.keyCode;
+      if ( (keyID >= 48 && keyID <= 57) || (keyID >= 96 && keyID <= 105) || keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39 ) 
+          return;
+      else
+          return false;
+    }
+   
+    function removeChar(event) {
+      event = event || window.event;
+      var keyID = (event.which) ? event.which : event.keyCode;
+      if ( keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39 ) 
+          return;
+      else
+          event.target.value = event.target.value.replace(/[^0-9]/g, "");
+    }
+  </script>
   {{> ex_navbar}}
 
   <!-- 사진 업로드 부분 -->
@@ -41,7 +60,7 @@
     
     <button id="btn-save-tag">태그등록</button><br>
     <label style="font-size: large;">가격</label>
-    <input id="inp-price" type="text" required autofocus><br>
+    <input onkeydown='return onlyNumber(event)' onkeyup='removeChar(event)' id="inp-price" type="text" required autofocus><br>
     <label style="font-size: large;">촬영 장소</label>
     <input id="inp-place" type="text" required autofocus><br>
     <label style="font-size: large;">사진 설명</label>
