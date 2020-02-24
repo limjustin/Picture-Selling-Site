@@ -58,15 +58,15 @@ Template.ex_mypageposting.events({
       }
       )}
       
-     if(newpassword.val() === newpasswordconfirm.val()) {
-      Accounts.changePassword(oldpassword.val(), newpassword.val(), function(err){
-        if(err){
-            // console.log(err);
-            return alert("비밀번호가 일치하지 않습니다.")
-        } else {
-          $('#inp-newpassword').val('');
-        }
-      })
+    //  if(newpassword.val() === newpasswordconfirm.val()) {
+    //   Accounts.changePassword(oldpassword.val(), newpassword.val(), function(err){
+    //     if(err){
+    //         // console.log(err);
+    //         return alert("비밀번호가 일치하지 않습니다.")
+    //     } else {
+    //       $('#inp-newpassword').val('');
+    //     }
+    //   })
      
   
     alert('저장하였습니다.');
@@ -81,4 +81,4 @@ Template.ex_mypageposting.events({
     window.history.back();
   }
 }
-})
+)
